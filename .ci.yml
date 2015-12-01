@@ -1,17 +1,10 @@
 environment:
   language: python
   vars:
-    DOCKER_IMAGE: '<% out<< JOB_NAME.toLowerCase().replaceAll('-','_') %>'
-    DOCKER_TAG: '<% if (DOTCI_TAG) { out<< DOTCI_TAG.replaceAll(/[^A-Za-z0-9._]/,"").toLowerCase() } else { %>latest<% } %>'
-    BUILDTAG: '<% out << BUILD_TAG.replaceAll(/[^A-Za-z0-9]/,"").toLowerCase() %>'
 
 build:
-  <% if ( DOTCI_PULL_REQUEST ) { %>
-  skip: true
-  <% } %>
   info:
     - docker --version
-
 
   run:
     # update
